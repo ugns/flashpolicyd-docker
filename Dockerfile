@@ -1,10 +1,9 @@
-FROM ruby:alpine
+FROM alpine
 
 MAINTAINER Jeremy T. Bouse <Jeremy.Bouse@UnderGrid.net>
 
 RUN apk upgrade --no-cache && \
-    apk add --no-cache tini && \
-    gem install flash_policy_server --no-rdoc --no-ri
+    apk add --no-cache python2 tini
 
 WORKDIR /flashpolicyd
 
@@ -16,4 +15,4 @@ ENV PORT 843
 EXPOSE ${PORT}
 
 ENTRYPOINT ["/sbin/tini", "--"]
-CMD ["./flashpolicyd"]
+CMD ["./flashpolicyd","--port=843","--file=crossdomain.xml"]
