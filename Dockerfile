@@ -24,4 +24,4 @@ ENV PORT 843
 EXPOSE ${PORT}
 
 ENTRYPOINT ["/sbin/tini", "--"]
-CMD ["ruby", "./flashpolicyd.rb", "--xml", "flashpolicy.xml", "--logfile", "flashpolicyd.log", "--no-daemonize"]
+CMD ["ruby", "./flashpolicyd.rb", "--xml", "flashpolicy.xml", "--logfile", "/dev/stdout", "--no-daemonize"]
